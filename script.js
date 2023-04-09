@@ -2,11 +2,9 @@ var searchInputEl = document.querySelector('.search-input')
 var searchResult = document.querySelector('.search-result')
 var btn = document.querySelector('.search-button')
 var localStorageEl = document.querySelector('.local-storage')
-var btnForLS = document.createElement("button");
+var btnForLS;
 var city;
-
-
-
+var searchHistories = [];
 
 function getAPI(city){
     //var url ='https://api.openweathermap.org/data/2.5/forecast/?q=Tokyo&cnt=5&appid=bd37527bc5df3c28cf62f2c192bc2e9f'
@@ -27,7 +25,26 @@ fetch(url)
 
 })
 }
-//getAPI();
+
+function saveHistories(){
+    //put the search word to array
+    searchHistories.push(city);
+    //save the updated search history to localstorage
+    localStorage.setItem("searchHistories", JSON.stringify(searchHistories))
+  // Get the existing history from local storage or create an empty array if there are no existing scores
+  btnForLS = document.createElement("button");
+  localStorageEl.appendChild(btnForLS);
+  btnForLS.textContent = city;
+}
+
+function storeStrage(){
+    searchHistories = JSON.parse(localStorage.getItem("searchHistories")) || [];
+    for(var i = 0; i < searchHistories.length; i++){
+        btnForLS = document.createElement("button");
+        localStorageEl.appendChild(btnForLS);
+        btnForLS.textContent = searchHistories[i];
+        }
+    }
 
 btn.addEventListener('click', () =>{
     
@@ -37,14 +54,17 @@ btn.addEventListener('click', () =>{
     saveHistories();
 })
 
-var searchHistories = [];
+storeStrage();
 
-function saveHistories(){
-    //create btn for searh history
-    localStorageEl.appendChild(btnForLS);
-    btnForLS.textContent = city;
-    //put the search word to array
-    searchHistories.push(city);
-    //save the updated search history to localstorage
-    localStorage.setItem("searchHistories", JSON.stringify(searchHistories))
-}
+// function searchFromHistory(){
+//     searchInputEl.textContent = btnForLS.textContent;
+// }
+
+// btnForLS.addEventListener('click', ()=>{
+
+//     console.log(btnForLS)
+//     searchFromHistory();
+// }
+// )
+
+
