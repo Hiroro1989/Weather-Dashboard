@@ -16,24 +16,25 @@
         <h1 class = "text-white">Weather Dashboard</h1>
     </header>
 
-    <main class = "d-flex flex-row ">
+    <main class = "container">
 
-    <div class = "search-box col-12 col-md-3 d-flex flex-column">
-        <h3 class="search-box-header">Input city name</h3>
+    <div class = "search-box col-12 col-lg-3 card">
+        <h3 class="search-box-header text-white">Input city name</h3>
         <input type="text" class ="search-input">
-        <button class="search-button">Search</button>
-        <div class = "local-storage">
+        <button class="search-button card-header bg-primary text-white text-center">Search</button>
+        <hr>
+        <div class = "local-storage card-body d-flex flex-column">
 
         </div>
     </div>
-    <div class = "search-result col-9 d-flex">
-        <div class = 'current'></div>
-        <div class = 'for-five-days col-9 d-flex flex-row'>
-            <div class = "day-1"></div>
-            <div class = "day-2"></div>
-            <div class = "day-3"></div>
-            <div class = "day-4"></div>
-            <div class = "day-5"></div>
+    <div class = "search-result col-lg-9">
+        <div class = 'current col-md-12'></div>
+        <div class = 'for-five-days col-md-12'>
+            <div class = "day-1 bg-primary"></div>
+            <div class = "day-2 bg-primary"></div>
+            <div class = "day-3 bg-primary"></div>
+            <div class = "day-4 bg-primary"></div>
+            <div class = "day-5 bg-primary"></div>
         </div>
 
     </div>

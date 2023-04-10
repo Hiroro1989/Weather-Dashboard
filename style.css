@@ -1,8 +1,47 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.search-box{
+    display: flex;
+    flex-direction: column;
+}
+
+.local-storage, .cityHistory{
+    margin: 2%;
+}
+
+
 .current{
     margin: 2%;
     border-style: solid;
 }
 
+.for-five-days{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 .day-1, .day-2, .day-3, .day-4, .day-5{
     margin: 2%;
+}
+
+@media screen and (max-width: 992px) {
+    .container{
+        flex-direction: column;
+    }    
+    .current{
+        margin: 2% 0 2% 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .for-five-days{
+        flex-direction: column;
+        justify-content: center;
+    }
+    
 }
