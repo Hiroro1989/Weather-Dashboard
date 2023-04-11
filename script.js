@@ -40,7 +40,7 @@ function getAPI(city) {
     })
     .then(function (data) {
 
-      saveHistories();
+     
 
       // create HTML elements for weather information
       var iconId = data.list[0].weather[0].icon;
@@ -198,6 +198,8 @@ function getAPI(city) {
       day5El.appendChild(tempEl5);
       day5El.appendChild(humidityEl5);
       day5El.appendChild(windEl5);
+
+      saveHistories();
     })
     .catch(function(error){
         console.log(error.message);
@@ -212,6 +214,8 @@ function saveHistories() {
        }
        else if(city == null){
         return;
+       }else if(city ==""){
+        return;
        }
       else
       {
@@ -223,7 +227,7 @@ function saveHistories() {
   btnForLS = document.createElement("button");
   localStorageEl.appendChild(btnForLS);
   btnForLS.textContent = city;
-  btnForLS.setAttribute("class", "cityHistory");
+  btnForLS.setAttribute("class", "cityHistory card-header bg-secondary text-white text-center");
 }
 }
 
@@ -233,7 +237,7 @@ function storeStrage() {
     btnForLS = document.createElement("button");
     localStorageEl.appendChild(btnForLS);
     btnForLS.textContent = searchHistories[i];
-    btnForLS.setAttribute("class", "cityHistory");
+    btnForLS.setAttribute("class", "cityHistory card-header bg-secondary text-white text-center");
     btnForLS.addEventListener("click", function () {
       var city = this.textContent;
       getAPI(city);
@@ -243,8 +247,9 @@ function storeStrage() {
 
 btn.addEventListener("click", () => {
   console.log(document.querySelector(".search-input").value);
-  city = searchInputEl.value.trim();
+  city = searchInputEl.value.toUpperCase().trim();
   getAPI(city);
+  searchInputEl.value="";
 });
 
 storeStrage();
